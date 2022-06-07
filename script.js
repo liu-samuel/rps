@@ -1,108 +1,119 @@
-let rockButton = document.querySelector(".rock");
-let paperButton = document.querySelector(".paper");
-let scissorsButton = document.querySelector(".scissors");
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
 
-rockButton.innerHTML = "Rock"
-paperButton.innerHTML = "Paper"
-scissorsButton.innerHTML = "Scissors"
+let rockButton = document.getElementsByClassName(".rock");
+let paperButton = document.getElementsByClassName(".paper");
+let scissorsButton = document.getElementsByClassName(".scissors");
 
-document.body.appendChild(rockButton);
-document.body.appendChild(paperButton);
-document.body.appendChild(scissorsButton);
+let result = document.querySelector(".result");
+let picks = document.querySelector(".picks");
+
+let resultText = document.createElement('div');
+resultText.classList.add('resultText');
+
+let picksText = document.createElement('div');
+picksText.classList.add('resultText');
+
+
+
+rockButton.onclick = function () {
+    playRound('rock', computerPlay());
+}
+
+paperButton.onclick = function () {
+    playRound('paper', computerPlay());
+}
+
+scissorsButton.onclick = function () {
+    playRound('scissors', computerPlay());
+}
+
+
 
 function computerPlay() {
     let rps = Math.floor(Math.random() * 3) + 1;
     switch(rps) {
         case 1:
-            return "Rock";
+            return "rock";
         case 2:
-            return "Paper";
+            return "paper";
         case 3: 
-            return "Scissors";
+            return "scissors";
     }
 }
 
 function playRound(playerSelection, computerSelection) {
-    let playerLowerCase = playerSelection.toLowerCase();
-    let computerLowerCase = computerSelection.toLowerCase();
     
-    if (playerLowerCase == "rock") {
-        if (computerLowerCase == "rock") {
-            console.log("You picked rock and the computer picked rock");
-            console.log("Draw!");
+    if (playerSelection == "rock") {
+        if (computerSelection == "rock") {
+            picksText.textContent("You picked rock and the computer picked rock");
+            picks.appendChild(picksText);
+            resultText.textContent("Draw!");
+            result.appendChild(resultText)
             return "draw";
         }
-        else if (computerLowerCase == "paper") {
-            console.log("You picked rock and the computer picked paper");
-            console.log("You lose! Paper wraps rock");
+        else if (computerSelection == "paper") {
+            picksText.textContent("You picked rock and the computer picked paper");
+            picks.appendChild(picksText);
+            resultText.textContent("You lose! Paper wraps rock");
+            result.appendChild(resultText)
             return "loss";
         }
-        else if (computerLowerCase == "scissors"){
-            console.log("You picked rock and the computer picked scissors");
-            console.log("You win! Rock smashes scissors");
+        else if (computerSelection == "scissors"){
+            picksText.textContent("You picked rock and the computer picked scissors");
+            picks.appendChild(picksText);
+            resultText.textContent("You win! Rock smashes scissors");
+            result.appendChild(resultText)
             return "win";
         }
     }
 
-    else if (playerLowerCase == "paper") {
-        if  (computerLowerCase == "paper") {
-            console.log("You picked paper and the computer picked paper");
-            console.log("Draw!");
+    else if (playerSelection == "paper") {
+        if  (computerSelection == "paper") {
+            picksText.textContent("You picked paper and the computer picked paper");
+            picks.appendChild(picksText);
+            resultText.textContent("Draw!");
+            result.appendChild(resultText);
             return "draw";
             }
-        else if (computerLowerCase == "scissors") {
-            console.log("You picked paper and the computer picked scissors");
-            console.log("You lose! Scissors cut paper");
+        else if (computerSelection == "scissors") {
+            picksText.textContent("You picked paper and the computer picked scissors");
+            picks.appendChild(picksText);
+            resultText.textContent("You lose! Scissors cut paper");
+            result.appendChild(resultText);
             return "loss";
         }
         else {
-            console.log("You picked paper and the computer picked rock");
-            console.log("You win! Paper wraps rock");
+            picksText.textContent("You picked paper and the computer picked rock");
+            picks.appendChild(picksText);
+            resultText.textContent("You win! Paper wraps rock");
+            result.appendChild(resultText);
             return "win";
         }
     }
 
-    else if (playerLowerCase == "scissors") {
-        if (computerLowerCase == "scissors") {
-            console.log("You picked scissors and the computer picked scissors");
-            console.log("Draw!");
+    else if (playerSelection == "scissors") {
+        if (computerSelection == "scissors") {
+            picksText.textContent("You picked scissors and the computer picked scissors");
+            picks.appendChild(picksText);
+            resultText.textContent("Draw!");
+            result.appendChild(resultText);
             return "draw";
         }
-        else if (computerLowerCase == "paper") {
-            console.log("You picked scissors and the computer picked paper");
-
-            console.log("You win! Scissors cut paper");
+        else if (computerSelection == "paper") {
+            picksText.textContent("You picked scissors and the computer picked paper");
+            picks.appendChild(picksText);
+            resultText.textContent("You win! Scissors cut paper");
+            result.appendChild(resultText);
             return "win";
         }
         else {
-            console.log("You picked scissors and the computer picked rock");
-
-            console.log("You lose! Rock smashes scissors");
+            picksText.textContent("You picked scissors and the computer picked rock");
+            picks.appendChild(picksText);
+            resultText.textContent("You lose! Rock smashes scissors");
+            result.appendChild(resultText);
             return "loss";
         }
-    }
-}
-
-function game() {
-    let playerWins = 0;
-    let computerWins = 0;
-    let draws = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt("Rock, Paper, or Scissors?");
-        let result = playRound(playerChoice, computerPlay());
-        if (result == "win") {
-            playerWins++;
-        }
-        else if (result == "draw") {
-            draws++;
-        }
-        else {
-            computerWins++;
-        }
-        
-        console.log("Player Wins: " + playerWins);
-        console.log("Computer Wins " + computerWins);
-        console.log("Draws: " + draws);
     }
 }
