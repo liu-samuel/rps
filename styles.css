@@ -1,8 +1,10 @@
 body {
     background-color: lightblue;
     display: flex;
+    padding: 200px;
+    margin: 100px;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -15,9 +17,6 @@ body {
 
 }
 
-body {
-    height: 100%;
-}
 
 
 

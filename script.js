@@ -15,18 +15,42 @@ let picksText = document.createElement('div');
 let cScoreText = document.querySelector(".cScore");
 let pScoreText = document.querySelector(".pScore");
 
+let restart = document.querySelector(".restart");
+
 
 
 rockButton.addEventListener('click', () => {
     playRound('rock', computerPlay());
+    if (playerWins == 5|| computerWins == 5) {
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+    }
 });
 
 paperButton.addEventListener('click', () => {
     playRound('paper', computerPlay());
+    if (playerWins == 5|| computerWins == 5) {
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+    }
 });
 
 scissorsButton.addEventListener('click', () => {
     playRound('scissors', computerPlay());
+    if (playerWins == 5|| computerWins == 5) {
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+    }
+});
+
+restart.addEventListener('click', () => {
+    playerWins = 0;
+    computerWins = 0;
+    draws = 0;
+    window.location.reload();
 });
 
 
