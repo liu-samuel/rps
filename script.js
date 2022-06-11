@@ -68,20 +68,20 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection == "rock") {
-        if (computerSelection == "rock") {
-            picksText.textContent = "You picked rock and the computer picked rock";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: Draw!";
-            result.appendChild(resultText)
-            draws += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
+    if (playerSelection == computerSelection) {
+        picksText.textContent = "You picked " + playerSelection + " and the computer picked " + computerSelection;
+        picks.appendChild(picksText);
+        resultText.textContent = "Result: Draw!";
+        result.appendChild(resultText);
+        draws += 1;
+        cScoreText.textContent = "Computer: " + computerWins;
+        pScoreText.textContent = "Player: " + playerWins;
+        scores.appendChild(cScoreText);
+        scores.appendChild(pScoreText);
         }
-        else if (computerSelection == "paper") {
+
+    else {
+        if (playerSelection == "rock" && computerSelection == "paper") {
             picksText.textContent = "You picked rock and the computer picked paper";
             picks.appendChild(picksText);
             resultText.textContent = "Result: You lose! Paper wraps rock";
@@ -92,7 +92,8 @@ function playRound(playerSelection, computerSelection) {
             scores.appendChild(cScoreText);
             scores.appendChild(pScoreText);
         }
-        else if (computerSelection == "scissors"){
+        
+        else {
             picksText.textContent = "You picked rock and the computer picked scissors";
             picks.appendChild(picksText);
             resultText.textContent = "Result: You win! Rock smashes scissors";
@@ -101,22 +102,11 @@ function playRound(playerSelection, computerSelection) {
             cScoreText.textContent = "Computer: " + computerWins;
             pScoreText.textContent = "Player: " + playerWins;
             scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);        }
-    }
+            scores.appendChild(pScoreText);        
+        }
+    
 
-    else if (playerSelection == "paper") {
-        if  (computerSelection == "paper") {
-            picksText.textContent = "You picked paper and the computer picked paper";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: Draw!";
-            result.appendChild(resultText);
-            draws += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
-            }
-        else if (computerSelection == "scissors") {
+        if (playerSelection == "paper" && computerSelection == "scissors") {
             picksText.textContent = "You picked paper and the computer picked scissors";
             picks.appendChild(picksText);
             resultText.textContent = "Result: You lose! Scissors cut paper";
@@ -138,21 +128,7 @@ function playRound(playerSelection, computerSelection) {
             scores.appendChild(cScoreText);
             scores.appendChild(pScoreText);
         }
-    }
-
-    else if (playerSelection == "scissors") {
-        if (computerSelection == "scissors") {
-            picksText.textContent = "You picked scissors and the computer picked scissors";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: Draw!";
-            result.appendChild(resultText);
-            draws += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
-        }
-        else if (computerSelection == "paper") {
+        if (playerSelection == "scissors" && computerSelection == "paper") {
             picksText.textContent = "You picked scissors and the computer picked paper";
             picks.appendChild(picksText);
             resultText.textContent = "Result: You win! Scissors cut paper";
@@ -176,5 +152,6 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
+
 
 
