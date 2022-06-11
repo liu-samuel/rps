@@ -1,12 +1,20 @@
 body {
     background-color: lightblue;
+}
+
+.heading {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+.scores {
     display: flex;
-    padding: 200px;
-    margin: 100px;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
+
+
 
 .buttons {
     display: flex;
@@ -15,6 +23,15 @@ body {
     justify-content: space-around;
     color: red;
 
+}
+
+.picks, .result {
+    text-align: center;
+}
+
+.restart {
+    display: flex;
+    justify-content: center;
 }
 
 
