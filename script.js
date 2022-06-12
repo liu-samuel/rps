@@ -9,12 +9,14 @@ let buttons = document.getElementsByTagName("button");
 
 let result = document.querySelector(".result");
 let picks = document.querySelector(".picks");
+let gameOver = document.querySelector(".gameOver");
 
 let scores = document.querySelector(".scores")
 let resultText = document.createElement('div');
 let picksText = document.createElement('div');
 let cScoreText = document.querySelector(".cScore");
 let pScoreText = document.querySelector(".pScore");
+let gameOverText = document.querySelector(".gameOver");
 
 let restart = document.querySelector(".restart");
 
@@ -27,6 +29,14 @@ rockButton.addEventListener('click', () => {
             buttons[i].disabled = true;
         }
     }
+    if (computerWins == 5) {
+        gameOverText.textContent = "The computer wins this game";
+        gameOver.appendChild(gameOverText);
+    }
+    else if (playerWins == 5) {
+        gameOverText.textContent = "You win this game";
+        gameOver.appendChild(gameOverText);
+    }
 });
 
 paperButton.addEventListener('click', () => {
@@ -35,7 +45,15 @@ paperButton.addEventListener('click', () => {
         for (let i = 0; i < 3; i++) {
             buttons[i].disabled = true;
         }
-     }
+    }
+    if (computerWins == 5) {
+        gameOverText.textContent = "The computer wins this game";
+        gameOver.appendChild(gameOverText);
+    }
+    else if (playerWins == 5) {
+        gameOverText.textContent = "You win this game";
+        gameOver.appendChild(gameOverText);
+    }
      
 });
 
@@ -45,7 +63,15 @@ scissorsButton.addEventListener('click', () => {
         for (let i = 0; i < 3; i++) {
             buttons[i].disabled = true;
         }
-     }
+    }
+    if (computerWins == 5) {
+        gameOverText.textContent = "The computer wins this game";
+        gameOver.appendChild(gameOverText);
+    }
+    else if (playerWins == 5) {
+        gameOverText.textContent = "You win this game";
+        gameOver.appendChild(gameOverText);
+    }
      
 });
 
@@ -76,79 +102,91 @@ function playRound(playerSelection, computerSelection) {
         draws += 1;
         cScoreText.textContent = "Computer: " + computerWins;
         pScoreText.textContent = "Player: " + playerWins;
-        scores.appendChild(cScoreText);
         scores.appendChild(pScoreText);
-        }
+        scores.appendChild(cScoreText);
+        
+    }
 
     else {
-        if (playerSelection == "rock" && computerSelection == "paper") {
-            picksText.textContent = "You picked rock and the computer picked paper";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You lose! Paper wraps rock";
-            result.appendChild(resultText)
-            computerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
+        if (playerSelection == 'rock') {
+            if (computerSelection == "paper") {
+                picksText.textContent = "You picked rock and the computer picked paper";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You lose! Paper wraps rock";
+                result.appendChild(resultText)
+                computerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText);
+                scores.appendChild(cScoreText);
+                
+            }
+            
+            else {
+                picksText.textContent = "You picked rock and the computer picked scissors";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You win! Rock smashes scissors";
+                result.appendChild(resultText)
+                playerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText); 
+                scores.appendChild(cScoreText);      
+            }
         }
         
-        else {
-            picksText.textContent = "You picked rock and the computer picked scissors";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You win! Rock smashes scissors";
-            result.appendChild(resultText)
-            playerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);        
-        }
     
+        else if (playerSelection == 'paper') {
+            if (computerSelection == "scissors") {
+                picksText.textContent = "You picked paper and the computer picked scissors";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You lose! Scissors cut paper";
+                result.appendChild(resultText);
+                computerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText); 
+                scores.appendChild(cScoreText);
+            }
+            else {
+                picksText.textContent = "You picked paper and the computer picked rock";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You win! Paper wraps rock";
+                result.appendChild(resultText);
+                playerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText); 
+                scores.appendChild(cScoreText);
+                   
+            }
+        }
 
-        if (playerSelection == "paper" && computerSelection == "scissors") {
-            picksText.textContent = "You picked paper and the computer picked scissors";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You lose! Scissors cut paper";
-            result.appendChild(resultText);
-            computerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
-        }
         else {
-            picksText.textContent = "You picked paper and the computer picked rock";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You win! Paper wraps rock";
-            result.appendChild(resultText);
-            playerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
-        }
-        if (playerSelection == "scissors" && computerSelection == "paper") {
-            picksText.textContent = "You picked scissors and the computer picked paper";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You win! Scissors cut paper";
-            result.appendChild(resultText);
-            playerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
-        }
-        else {
-            picksText.textContent = "You picked scissors and the computer picked rock";
-            picks.appendChild(picksText);
-            resultText.textContent = "Result: You lose! Rock smashes scissors";
-            result.appendChild(resultText);
-            computerWins += 1;
-            cScoreText.textContent = "Computer: " + computerWins;
-            pScoreText.textContent = "Player: " + playerWins;
-            scores.appendChild(cScoreText);
-            scores.appendChild(pScoreText);
+            if (computerSelection == "paper") {
+                picksText.textContent = "You picked scissors and the computer picked paper";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You win! Scissors cut paper";
+                result.appendChild(resultText);
+                playerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText);
+                scores.appendChild(cScoreText);
+            }
+            else {
+                picksText.textContent = "You picked scissors and the computer picked rock";
+                picks.appendChild(picksText);
+                resultText.textContent = "Result: You lose! Rock smashes scissors";
+                result.appendChild(resultText);
+                computerWins += 1;
+                cScoreText.textContent = "Computer: " + computerWins;
+                pScoreText.textContent = "Player: " + playerWins;
+                scores.appendChild(pScoreText);
+                scores.appendChild(cScoreText);
+                
+            }
+        
         }
     }
 }

@@ -1,6 +1,9 @@
 body {
     background-color: lightblue;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .heading {
     text-align: center;
@@ -22,18 +25,29 @@ body {
     align-items: center;
     justify-content: space-around;
     color: red;
-
+    padding: 100px;
 }
 
 .picks, .result {
     text-align: center;
-    
+
+}
+
+.result {
+    padding: 100px;
+}
+
+.gameOver {
+    text-align: center;
 }
 
 .restart {
     display: flex;
     justify-content: center;
+    padding: 100px;
 }
+
+
 
 
 
