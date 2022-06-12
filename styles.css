@@ -11,13 +11,24 @@ body {
     font-weight: bold;
 }
 
+.images {
+    width: 25%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 150px;
+}
+
+.rockImg, .paperImg, .scissorsImg {
+    padding-left: 100px
+}
+
 .scores {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-
-
 
 .buttons {
     display: flex;
@@ -25,7 +36,7 @@ body {
     align-items: center;
     justify-content: space-around;
     color: red;
-    padding: 100px;
+    padding: 50px;
 }
 
 .picks, .result {
@@ -34,7 +45,7 @@ body {
 }
 
 .result {
-    padding: 100px;
+    padding: 50px;
 }
 
 .gameOver {
@@ -44,7 +55,7 @@ body {
 .restart {
     display: flex;
     justify-content: center;
-    padding: 100px;
+    padding: 50px;
 }
 
 
